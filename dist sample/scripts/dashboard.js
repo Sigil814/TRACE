@@ -18,14 +18,16 @@ $(document).ready(function() {
     $(this).data('e_id', employees[i]._id);
   })
 
-  //KEEPS GRID IN SHAPE AS WINDOW RESIZES
+  //KEEPS GRID and SIDEBAR IN SHAPE AS WINDOW RESIZES
   $('.gridbox').css('height', $('.gridbox').width());
   $('#x-axis').css('width', $('.gc').width() * 3);
   $('#y-axis').css('height', $('.gc').width() * 3);
+  $('#side-bar-list').css('height', $('.gridbox').width() *3);
   $(window).resize(function() {
     $('.gridbox').css('height', $('.gridbox').width());
     $('#x-axis').css('width', $('.gc').width() * 3);
     $('#y-axis').css('height', $('.gc').width() * 3);
+    $('#side-bar-list').css('height', $('.gridbox').width() *3);
   })
 
   // Zoom
