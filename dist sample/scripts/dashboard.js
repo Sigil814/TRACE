@@ -9,9 +9,9 @@ $(document).ready(function() {
     emp = data[i];
     employees[emp._id] = emp;
   }
-
+//TODO START HERE
   for (var i in employees) {
-    $('#side-bar-list').append("<li><a>" + employees[i].fname + " " + employees[i].lname + "</a></li>");
+    $('#side-bar-list').append("<li><span><input type='checkbox' class='side-bar-checks' id=chbx_"+employees[i]._id+" name='checkbox1'>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
   }
   //Tag SIDEBAR items with e_id
   $('#side-bar-list li').each(function(i) {
@@ -22,12 +22,12 @@ $(document).ready(function() {
   $('.gridbox').css('height', $('.gridbox').width());
   $('#x-axis').css('width', $('.gc').width() * 3);
   $('#y-axis').css('height', $('.gc').width() * 3);
-  $('#side-bar-list').css('height', $('.gridbox').width() *3);
+  $('#side-bar-list').css('height', $('.gridbox').width() * 3);
   $(window).resize(function() {
     $('.gridbox').css('height', $('.gridbox').width());
     $('#x-axis').css('width', $('.gc').width() * 3);
     $('#y-axis').css('height', $('.gc').width() * 3);
-    $('#side-bar-list').css('height', $('.gridbox').width() *3);
+    $('#side-bar-list').css('height', $('.gridbox').width() * 3);
   })
 
   // Zoom
@@ -93,7 +93,7 @@ $(document).ready(function() {
     //gridbox ID
     var gbID = parseInt($(this).attr('id').slice(-1));
     $("#side-bar-list li").each(function() {
-      if($.inArray($(this).data('e_id'), scoreGrid[gbID]) >= 0){
+      if ($.inArray($(this).data('e_id'), scoreGrid[gbID]) >= 0) {
         $(this).show();
       } else {
         $(this).hide();
@@ -138,7 +138,7 @@ $(document).ready(function() {
   var plotScores = function() {
     var perf = 0,
       pot = 0;
-      //local version of scoreGrid for calculations
+    //local version of scoreGrid for calculations
     var scGrid = {
       "0": [],
       "1": [],

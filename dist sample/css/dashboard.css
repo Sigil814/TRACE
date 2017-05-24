@@ -58,6 +58,13 @@ input#searchfield {
   background: #666666;
 }
 /*******************************CONTENT-AREA**********************************/
+.content-area {
+  padding-right: 2%;
+  /*padding-bottom: 2%;*/
+  margin-bottom: 2%;
+  /*background: rgba(128,128,128,.5) !important;*/
+}
+
 #content-wrapper {
   background: white !important;
   margin: 2% 0;
@@ -65,13 +72,6 @@ input#searchfield {
   -moz-box-shadow:    1px 0px 5px 6px #ccc;
   -webkit-box-shadow: 1px 0px 5px 6px #ccc;
   box-shadow:         1px 0px 5px 6px #ccc;
-}
-
-.content-area {
-  padding-right: 2%;
-  /*padding-bottom: 2%;*/
-  margin-bottom: 2%;
-  /*background: rgba(128,128,128,.5) !important;*/
 }
 /********************************H2: TITLE OF PAGE*************************************/
 h2.type-contenttitle {
@@ -93,75 +93,63 @@ h2.type-contenttitle {
 /*************************TOOLBAR END***************************/
 
 /***********************************SIDEBAR***********************************/
-h3#side-bar-title {
-  width: 100%;
-  margin: 7% 0 5% 0;
+#side-section {
+  border-right: solid slategray 1px;
+  padding:0;
 }
+
 #side-bar-title {
-  padding: 0;
+  width: 100%;
+  /*margin: 7% 0 5% 0;*/
+  padding: 0 0 5%;
 }
 
-ul#side-bar-list.side-nav.hidden-xs-animated.col-xs-12 {
-  height: 495px;
-  overflow-y: auto;
-  /*background: chocolate;*/
-  /*border: lightgray solid 1px; removed for aesthetics*/
-}
-
-h2#side-bar-header {
-  padding-bottom: 5%;
-}
-
-#side-bar.col-xs-3.padding-none {
+#side-bar {
   /*padding: 3%;
   background: #505050;*/
   width: 100%;
   margin-bottom: 18%;
+  padding: inherit;
 }
 
-#list-searchbar {
-  border-right: solid slategray 1px;
-  padding-top: 2%;
-}
-
-a {
-  color: white !important; /*we will need to distinguish this anchor tag from the other anchors on page*/
+#side-bar-list {
+  overflow-y: auto;
+  padding: inherit;
 }
 
 #side-bar-list li {
   height: 45px;
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  padding-left: 10px;
   border-bottom: chocolate 1px solid;
   background: #E88924;
-  /*color: white;*/
   -moz-box-shadow: inset 0 0 10px #FF6208;
   -webkit-box-shadow: inset 0 0 10px #FF6208;
   box-shadow: inset -5px 0 10px #FF6208;
 }
 
-#side-bar-list li a {
-  /*text-decoration: none;
-  background: blue;*/
-  /*color: antiquewhite !important;*/
+#side-bar-list li span {
+  color: white !important;
+  background-color:transparent;
 }
 
-#side-bar-list li a:hover, #side-bar-list li a:active{
-  height: 60%;
+#side-bar-list li:hover, #side-bar-list li:active{
   border-bottom: #333333 1px solid;
   background-color: #666666 !important;
-  /*color: white;*/
   -moz-box-shadow: inset 0 0 10px #202020;
   -webkit-box-shadow: inset 0 0 10px #202020;
   /*box-shadow: inset 0 0 10px #FF6208; removed for aesthetics*/
   box-shadow: inset -5px 0 10px #202020;
 }
 
-#side-bar-list li a:hover {
-  /*border-color: #1c8dc8;*/
-  /*color: black !important;*/
+.side-bar-checks {
+  /*display: none;*/
 }
 /***********************************SIDEBAR END***********************************/
 /***********************************SCROLL BAR START******************************/
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     width: 12px;
 }
 
@@ -173,7 +161,7 @@ a {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
+}*/
 /**********************************SCROLL BAR END***************************************/
 /**********************************AXIS FOR X AND Y START***************************************/
 .axis {
@@ -202,7 +190,7 @@ a {
 #grid-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: -2%;
+  /*margin-top: -2%;*/
 }
 
 #grid {/*grid column*/
