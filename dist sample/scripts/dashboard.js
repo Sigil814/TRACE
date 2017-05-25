@@ -168,6 +168,7 @@ $(document).ready(function() {
       }
       scGrid['' + k].push(employees[i]._id);
     }
+    
     for (var i in scGrid) {
       var l = scGrid['' + i].length;
       if (l === 0) {

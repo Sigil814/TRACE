@@ -12,6 +12,7 @@ $(document).ready(function() {
 
   for (var i in employees) {
     $('#side-bar-list').append("<li><span>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
+    console.log(employees[i].department);
   }
 
   //KEEPS SIDEBAR IN SHAPE AS WINDOW RESIZES
