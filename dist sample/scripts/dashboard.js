@@ -32,7 +32,12 @@ $(document).ready(function() {
         $(this).hide();
       }
     })
-    updateSideBarBtns();
+
+    if($('#side-bar-list li').filter(':hidden').length > 0){//checks if any side-bar-list items are hidden
+      $('#clear-btn').removeClass('disabled');
+    } else {
+      $('#clear-btn').addClass('disabled');
+    }
   });
 
   // Zoom

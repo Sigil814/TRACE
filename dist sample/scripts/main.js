@@ -13,6 +13,15 @@ $(document).ready(function() {
   for (var i in employees) {
     $('#side-bar-list').append("<li><span>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
   }
+
+  //KEEPS SIDEBAR IN SHAPE AS WINDOW RESIZES
+  //SIDEBAR can't be dependant on the grid as it is only on the dashboard
+  //TODO fix this
+  // $('#side-bar-list').css('height', $('#grid-wrapper').width());
+  // $(window).resize(function() {
+  //   $('#side-bar-list').css('height', $('#grid-wrapper').width());
+  // })
+
   //Tag SIDEBAR items with e_id
   $('#side-bar-list li').each(function(i) {
     $(this).data('e_id', employees[i]._id);
@@ -34,7 +43,7 @@ $(document).ready(function() {
     } else {
       $('#eval-btn, #profile-btn').addClass('disabled');
       if($('#side-bar-list li').filter(':hidden').length > 0){//checks if any side-bar-list items are hidden
-        $('#clear-btn').removeClass('disabled');//TODO fix
+        $('#clear-btn').removeClass('disabled');
       } else {
         $('#clear-btn').addClass('disabled');
       }
@@ -93,13 +102,5 @@ $(document).ready(function() {
       return;//prevents button from working if it should be disabled
     $('#side-bar-list li').removeClass('selected').show();
     updateSideBarBtns();
-  })
-
-  //KEEPS GRID and SIDEBAR IN SHAPE AS WINDOW RESIZES
-  //SIDEBAR can't be dependant on gridbox width as gridbox is only on the dashboard
-  //TODO fix^
-  $('#side-bar-list').css('height', $('.gridbox').width() * 3);
-  $(window).resize(function() {
-    $('#side-bar-list').css('height', $('.gridbox').width() * 3);
   })
 });
