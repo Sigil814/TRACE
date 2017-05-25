@@ -11,7 +11,7 @@ $(document).ready(function() {
   }
 
   for (var i in employees) {
-    $('#side-bar-list').append("<li><span><input type='checkbox' class='side-bar-check' id=chbx_"+employees[i]._id+" name='checkbox1'>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
+    $('#side-bar-list').append("<li><span>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
   }
   //Tag SIDEBAR items with e_id
   $('#side-bar-list li').each(function(i) {
@@ -22,30 +22,72 @@ $(document).ready(function() {
     //TODO link to profile page based on e_id
     if( $(this).hasClass('selected') ){
       $(this).removeClass('selected');
-      //google how to check the checkbox
-      // $('.side-bar-check')
     } else {
       $(this).addClass('selected');
     }
+    updateSideBarBtns();
   })
+  //toggles disabled on SIDEBAR buttons that require selected employees
+  var updateSideBarBtns = function(){
+    if($('#side-bar-list li.selected').length > 0){
+      $('#eval-btn, #profile-btn, #clear-btn').removeClass('disabled');
+    } else if($('#side-bar-list li').filter(':hidden').length > 0){
+      $('#clear-btn').removeClass('disabled');
+    } else {
+      $('#eval-btn, #profile-btn, #clear-btn').addClass('disabled');
+    }
+  }
 
+  //Display button text on hover
+  //$().hover(mouse in, mouse out)
   $('#eval-btn').hover(function() {
-    //google how to check hover state
-    $(this).text('Rate');
+    $(this).text(' Rate');
+  },function() {
+    $(this).text('');
   })
 
+  $('#checklist-btn').hover(function() {
+    $(this).text(' Select All');
+  },function() {
+    $(this).text('');
+  })
+
+  $('#profile-btn').hover(function() {
+    $(this).text(' Profile');
+  },function() {
+    $(this).text('');
+  })
+
+  $('#clear-btn').hover(function() {
+    $(this).text(' Clear');
+  },function() {
+    $(this).text('');
+  })
+
+  $('#eval-btn').click(function() {
+    if($(this).hasClass('disabled'))
+      return;//prevents button from working if it should be disabled
+    alert("Whoops this isn't implemented yet");
+  })
+  //seleects only the employees that are currently visable in the side-bar-list
   $('#checklist-btn').click(function() {
-    if( $(this).hasClass('selected') ){
-      $(this).removeClass('selected');
-      $('.side-bar-check').hide();
-    } else {
-      $(this).addClass('selected');
-      $('.side-bar-check').show();
-    }
+    if($(this).hasClass('disabled'))
+      return;//prevents button from working if it should be disabled
+    $('#side-bar-list li').filter(':visible').addClass('selected');
+    updateSideBarBtns();
   })
 
   $('#profile-btn').click(function() {
+    if($(this).hasClass('disabled'))
+      return;//prevents button from working if it should be disabled
+    alert("Whoops this isn't implemented yet");
+  })
 
+  $('#clear-btn').click(function() {
+    if($(this).hasClass('disabled'))
+      return;//prevents button from working if it should be disabled
+    $('#side-bar-list li').removeClass('selected').show();
+    updateSideBarBtns();
   })
 
   //KEEPS GRID and SIDEBAR IN SHAPE AS WINDOW RESIZES
@@ -59,6 +101,21 @@ $(document).ready(function() {
     $('#y-axis').css('height', $('.gc').width() * 3);
     $('#side-bar-list').css('height', $('.gridbox').width() * 3);
   })
+
+  //Select dataPoint
+  $('.dataPoint').click(function() {
+    //gridbox ID WARNNIG: will break if gbIDs are greater than 9
+    var gbID = parseInt($(this).attr('id').slice(-1));
+    $("#side-bar-list li").each(function() {
+      //$.inArray(value, array) returns index of value in array or -1 if not found
+      if ($.inArray($(this).data('e_id'), scoreGrid[gbID]) >= 0) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    })
+    updateSideBarBtns();
+  });
 
   // Zoom
   $('.gridbox').click(function(e) {
@@ -119,19 +176,6 @@ $(document).ready(function() {
     }
   }) //Zoom End
 
-  //Select dataPoint
-  $('.dataPoint').click(function() {
-    //gridbox ID
-    var gbID = parseInt($(this).attr('id').slice(-1));
-    $("#side-bar-list li").each(function() {
-      if ($.inArray($(this).data('e_id'), scoreGrid[gbID]) >= 0) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    })
-  });
-
   // Reset Grid
   var resetGrid = function(c) {
     $('.gridbox').removeClass('blue');
@@ -166,6 +210,7 @@ $(document).ready(function() {
     "7": [],
     "8": []
   };
+  //stores e_ids into scoreGrid dictionary in key cell that cooresponds to gridbox
   var plotScores = function() {
     var perf = 0,
       pot = 0;
