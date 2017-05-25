@@ -9,13 +9,43 @@ $(document).ready(function() {
     emp = data[i];
     employees[emp._id] = emp;
   }
-//TODO START HERE
+
   for (var i in employees) {
-    $('#side-bar-list').append("<li><span><input type='checkbox' class='side-bar-checks' id=chbx_"+employees[i]._id+" name='checkbox1'>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
+    $('#side-bar-list').append("<li><span><input type='checkbox' class='side-bar-check' id=chbx_"+employees[i]._id+" name='checkbox1'>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
   }
   //Tag SIDEBAR items with e_id
   $('#side-bar-list li').each(function(i) {
     $(this).data('e_id', employees[i]._id);
+  })
+
+  $('#side-bar-list li').click(function(e) {
+    //TODO link to profile page based on e_id
+    if( $(this).hasClass('selected') ){
+      $(this).removeClass('selected');
+      //google how to check the checkbox
+      // $('.side-bar-check')
+    } else {
+      $(this).addClass('selected');
+    }
+  })
+
+  $('#eval-btn').hover(function() {
+    //google how to check hover state
+    $(this).text('Rate');
+  })
+
+  $('#checklist-btn').click(function() {
+    if( $(this).hasClass('selected') ){
+      $(this).removeClass('selected');
+      $('.side-bar-check').hide();
+    } else {
+      $(this).addClass('selected');
+      $('.side-bar-check').show();
+    }
+  })
+
+  $('#profile-btn').click(function() {
+
   })
 
   //KEEPS GRID and SIDEBAR IN SHAPE AS WINDOW RESIZES
@@ -32,6 +62,7 @@ $(document).ready(function() {
 
   // Zoom
   $('.gridbox').click(function(e) {
+    //prevents clicks on data points from hitting on the grid
     if (e.target !== this)
       return;
     if ($('.gridbox').hasClass('zoomed')) {

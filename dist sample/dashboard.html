@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- ADDED OFFLINE VERSION OF jQuery SO I CAN WORK ON THE TRAIN [DAN]-->
+  <script src="scripts/jquery-3.2.1.min.js"></script>
   <script src="scripts/dashboard.js"></script>
 </head>
 
@@ -195,10 +197,10 @@
         <h3 id="side-bar-title">Employees</h3>
         <div id="toolbar" class="col-xs-12">
           <!-- <button class="button secondary outline icon gridtabs-arrows"><i class="icon-back"></i></button> -->
-          <button class="button icon-checkmark-circle"></button>
-          <button class="button icon-checklist"></button>
-          <!--make this a switch-->
-          <button class="button icon-profile"></button>
+          <button id="eval-btn" class="button disabled icon-checkmark-circle"></button>
+          <button id="profile-btn" class="button disabled icon-group"></button>
+          <!--make this a switch?-->
+          <button id="checklist-btn" class="button icon-checklist"></button>
           <!-- <button class="button secondary outline icon gridtabs-arrows"><i class="icon-forward"></i></button> -->
         </div>
         <div id="side-bar" class="col-xs-3 padding-none">
