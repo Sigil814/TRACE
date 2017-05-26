@@ -40,14 +40,14 @@ $(document).ready(function() {
   //toggles disabled on SIDEBAR buttons that require selected employees
   var updateSideBarBtns = function(){
     if($('#side-bar-list li.selected').length > 0){//checks if any side-bar-list items are selected
-      $('#eval-btn, #profile-btn, #clear-btn').removeClass('disabled');
+      $('#eval-btn, #profile-btn').removeClass('disabled');
     } else {
       $('#eval-btn, #profile-btn').addClass('disabled');
-      if($('#side-bar-list li').filter(':hidden').length > 0){//checks if any side-bar-list items are hidden
-        $('#clear-btn').removeClass('disabled');
-      } else {
-        $('#clear-btn').addClass('disabled');
-      }
+    }
+    if($('#side-bar-list li').filter(':hidden').length > 0){//checks if any side-bar-list items are hidden
+      $('#reset-btn').removeClass('disabled');
+    } else {
+      $('#reset-btn').addClass('disabled');
     }
   }
 
@@ -71,8 +71,8 @@ $(document).ready(function() {
     $(this).text('');
   })
 
-  $('#clear-btn').hover(function() {
-    $(this).text(' Clear');
+  $('#reset-btn').hover(function() {
+    $(this).text(' Reset');
   },function() {
     $(this).text('');
   })
@@ -87,7 +87,13 @@ $(document).ready(function() {
   $('#checklist-btn').click(function() {
     if($(this).hasClass('disabled'))
       return;//prevents button from working if it should be disabled
-    $('#side-bar-list li').filter(':visible').addClass('selected');
+      if($(this).hasClass('active')){
+        $('#side-bar-list li').filter(':visible').removeClass('selected');
+        $(this).removeClass('active');
+      } else {
+        $('#side-bar-list li').filter(':visible').addClass('selected');
+        $(this).addClass('active');
+      }
     updateSideBarBtns();
   })
 
@@ -98,10 +104,10 @@ $(document).ready(function() {
     //TODO load profile page w/ e_id from selected
   })
 
-  $('#clear-btn').click(function() {
+  $('#reset-btn').click(function() {
     if($(this).hasClass('disabled'))
       return;//prevents button from working if it should be disabled
-    $('#side-bar-list li').removeClass('selected').show();
+    $('#side-bar-list li').show();
     updateSideBarBtns();
   })
 });
