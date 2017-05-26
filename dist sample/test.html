@@ -21,29 +21,114 @@
   <script src="citrus/scripts/libs/modernizr.js"></script>
   <!-- OUR STYLES -->
   <link rel="stylesheet" href="css/main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="scripts/jquery-3.2.1.min.js"></script>
   <script src="scripts/main.js"></script>
+
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="scripts/dashboard.js"></script>
 </head>
 
 <body class="citrus">
-  <div id="side-section" class="col-xs-3">
-    <h3 id="side-bar-title">Employees</h3>
-    <div id="toolbar" class="button-group segmented-control col-xs-12">
+  <div class="row">
+    <div id="side-section" class="col-xs-3">
+    <h3 id="side-bar-title" class="type-sectiontitle">Employees</h3>
+    <div id="toolbar" class="button-group col-xs-12">
       <button id="eval-btn" class="button disabled icon-checkmark-circle"></button>
       <button id="profile-btn" class="button disabled icon-group"></button>
       <button id="checklist-btn" class="button icon-checklist"></button>
-      <button id="clear-btn" class="button disabled icon-x-circle"></button>
+      <button id="reset-btn" class="button disabled icon-reset"></button>
     </div>
-    <div id="side-bar" class="col-xs-3 padding-none">
-      <ul id="side-bar-list" class="side-nav hidden-xs-animated col-xs-12">
+    <div id="side-bar" class="col-sm-3 padding-none border-right border-right-xs-none">
+      <ul id="side-bar-list" class="side-nav hidden-xs-animated">
       </ul>
     </div>
   </div>
-  <div id="gridtabs" class="button-group col-xs-6">
-    <button id="" class="button">Sales Associate</button>
-    <button id="" class="button">Cashier</button>
-    <button id="" class="button">Freight</button>
-    <button class="button secondary outline icon-plus-circle"></button>
+    <div class="col-sm-9 border-left border-fix">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="type-sectiontitle">Responsive Nav</h3>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text">
+          </div>
+          <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>SSN</label>
+            <input type="text">
+          </div>
+          <div class="form-group">
+            <label>Notes</label>
+            <textarea cols="30" rows="10"></textarea>
+          </div>
+        </div>
+      </div> -->
+      <div id="grid-wrapper" class="">
+        <div id="y-axis" class="axis">
+          <span id="y4">10</span>
+          <span id="y3">7</span>
+          <span id="y2">4</span>
+          <span id="y1">1</span>
+        </div>
+        <div id="grid" class="row col-xs-10">
+          <div class="col-xs-4 padding-none gc">
+            <div id="gb6" class="gridbox c1 r1 yellow">
+              <a id="dp6" class="button count dataPoint"></a>
+            </div>
+            <div id="gb3" class="gridbox c1 r2 orange">
+              <a id="dp3" class="button count dataPoint"></a>
+            </div>
+            <div id="gb0" class="gridbox c1 r3 red">
+              <a id="dp0" class="button count dataPoint"></a>
+            </div>
+          </div>
+          <div class="col-xs-4 padding-none gc">
+            <div id="gb7" class="gridbox c2 r1 green">
+              <a id="dp7" class="button count dataPoint"></a>
+            </div>
+            <div id="gb4" class="gridbox c2 r2 yellow">
+              <a id="dp4" class="button count dataPoint"></a>
+            </div>
+            <div id="gb1" class="gridbox c2 r3 orange">
+              <a id="dp1" class="button count dataPoint"></a>
+            </div>
+          </div>
+          <div class="col-xs-4 padding-none gc">
+            <div id="gb8" class="gridbox c3 r1 blue">
+              <a id="dp8" class="button count dataPoint"></a>
+            </div>
+            <div id="gb5" class="gridbox c3 r2 green">
+              <a id="dp5" class="button count dataPoint"></a>
+            </div>
+            <div id="gb2" class="gridbox c3 r3 yellow">
+              <a id="dp2" class="button count dataPoint"></a>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div id="x-axis" class="axis">
+              <span id="x1">1</span>
+              <span id="x2">4</span>
+              <span id="x3">7</span>
+              <span id="x4">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
+
 </html>

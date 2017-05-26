@@ -12,7 +12,6 @@ $(document).ready(function() {
 
   for (var i in employees) {
     $('#side-bar-list').append("<li><span>" + employees[i].fname + " " + employees[i].lname + "</span></li>");
-    console.log(employees[i].department);
   }
 
   //KEEPS SIDEBAR IN SHAPE AS WINDOW RESIZES
@@ -60,7 +59,11 @@ $(document).ready(function() {
   })
 
   $('#checklist-btn').hover(function() {
-    $(this).text(' Select All');
+    if($(this).hasClass('active')){
+      $(this).text(' Clear All');
+    } else {
+      $(this).text(' Select All');
+    }
   },function() {
     $(this).text('');
   })
@@ -87,13 +90,22 @@ $(document).ready(function() {
   $('#checklist-btn').click(function() {
     if($(this).hasClass('disabled'))
       return;//prevents button from working if it should be disabled
-      if($(this).hasClass('active')){
-        $('#side-bar-list li').filter(':visible').removeClass('selected');
-        $(this).removeClass('active');
-      } else {
-        $('#side-bar-list li').filter(':visible').addClass('selected');
-        $(this).addClass('active');
-      }
+    if($(this).hasClass('active')){
+      $('#side-bar-list li').filter(':visible').removeClass('selected');
+      $(this).removeClass('active');
+    } else {
+      $('#side-bar-list li').filter(':visible').addClass('selected');
+      $(this).addClass('active');
+    }
+    if($(this).hasClass('active')){
+      $(this).text(' Clear All');
+      $(this).removeClass('icon-checklist');
+      $(this).addClass('icon-list');
+    } else {
+      $(this).text(' Select All');
+      $(this).removeClass('icon-list');
+      $(this).addClass('icon-checklist');
+    }
     updateSideBarBtns();
   })
 
